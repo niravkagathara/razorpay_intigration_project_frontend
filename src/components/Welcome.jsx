@@ -10,7 +10,7 @@ const Welcome = () => {
     venue: "Online Tournament (Remote)",
     address: "Play from anywhere in India",
     poolPrize: "₹50,000",
-    entryFee: "FREE",
+    entryFee: "100",
     maxTeams: 100,
     registrationDeadline: "10th December 2025",
     tournamentFormat: "Squad (4 Players)",
