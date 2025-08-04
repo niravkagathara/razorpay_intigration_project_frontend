@@ -301,7 +301,7 @@ const RegistrationForm = () => {
 
         {/* Additional Info */}
         <div className="mt-8 text-center text-gray-400">
-          <p className="text-lg mb-2">📧 Email Confirmation • ✅ Team Verification • 🆓 ₹10 Payment required</p>
+          <p className="text-lg mb-2">📧 Email Confirmation • ✅ Team Verification • 🆓 ₹100 Payment required</p>
           <p className="text-sm">Your team will be verified by admin after registration</p>
         </div>
       </div>
