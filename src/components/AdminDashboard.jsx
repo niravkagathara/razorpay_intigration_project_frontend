@@ -20,10 +20,10 @@ const AdminDashboard = () => {
   const handleLogout = () => {
     localStorage.removeItem("isAdminLoggedIn");
     window.location.reload();
-  };      
+  };
   const fetchTeams = async () => {
     try {
-      const response = await axios.get('https://razorpay-intigration-project-backen.vercel.app/api/admin/teams');
+      const response = await axios.get('http://localhost:5000/api/admin/teams');
       if (response.data.success) {
         setTeams(response.data.teams);
       }
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get('https://razorpay-intigration-project-backen.vercel.app/api/admin/stats');
+      const response = await axios.get('http://localhost:5000/api/admin/stats');
       if (response.data.success) {
         setStats(response.data.stats);
       }
@@ -48,12 +48,17 @@ const AdminDashboard = () => {
   const handleVerifyTeam = async (teamId) => {
     setVerifying(true);
     try {
-      const response = await axios.post(`https://razorpay-intigration-project-backen.vercel.app/api/admin/verify-team/${teamId}`, {
+      const response = await axios.post(`http://localhost:5000/api/admin/verify-team/${teamId}`, {
         verifiedBy: 'Admin'
       });
-      
+
       if (response.data.success) {
         fetchTeams(); // Refresh teams list
+        console.log(response.data);
+        console.log(teamId);
+        console.log(response.data.success);
+        console.log(response.data.message);
+        console.log(response.data.team);
         setError("");
       }
     } catch (error) {
@@ -64,8 +69,8 @@ const AdminDashboard = () => {
   };
 
   const handleTeamSelection = (teamId) => {
-    setSelectedTeams(prev => 
-      prev.includes(teamId) 
+    setSelectedTeams(prev =>
+      prev.includes(teamId)
         ? prev.filter(id => id !== teamId)
         : [...prev, teamId]
     );
@@ -83,12 +88,12 @@ const AdminDashboard = () => {
     setSendUpdateLoading(true);
     try {
       setSendUpdateLoading(true);
-      const response = await axios.post('https://razorpay-intigration-project-backen.vercel.app/api/admin/send-update', {
+      const response = await axios.post('http://localhost:5000/api/admin/send-update', {
         message: updateMessage,
         subject: updateSubject,
         selectedTeams: selectedTeams
       });
-      
+
       if (response.data.success) {
         setShowUpdateModal(false);
         setUpdateMessage("");
@@ -100,7 +105,7 @@ const AdminDashboard = () => {
       setError('Failed to send update');
     } finally {
       setSendUpdateLoading(false);
-    } 
+    }
   };
 
   const getStatusColor = (status) => {
@@ -133,7 +138,7 @@ const AdminDashboard = () => {
   }
 
   return (
-   
+
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black text-white py-8">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
@@ -141,8 +146,8 @@ const AdminDashboard = () => {
           <h1 className="text-4xl font-bold text-yellow-400 mb-4">👑 Admin Dashboard</h1>
           <p className="text-gray-300">Manage Free Fire Tournament Teams</p>
         </div>
-          <div className="text-right">
-        <button onClick={handleLogout} className="align-right relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold text-xl rounded-full hover:from-orange-500 hover:to-red-500 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-yellow-400/50 disabled:opacity-50 disabled:cursor-not-allowed">Logout</button>
+        <div className="text-right">
+          <button onClick={handleLogout} className="align-right relative px-8 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold text-xl rounded-full hover:from-orange-500 hover:to-red-500 transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-yellow-400/50 disabled:opacity-50 disabled:cursor-not-allowed">Logout</button>
         </div>
         {/* Error Message */}
         {error && (
@@ -196,50 +201,89 @@ const AdminDashboard = () => {
         {/* Teams List */}
         <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm border border-gray-700 rounded-xl p-6 shadow-2xl">
           <h2 className="text-2xl font-bold text-white mb-6">📋 Registered Teams</h2>
-          
+
           {teams.length === 0 ? (
             <div className="text-center py-8 text-gray-400">
               <p className="text-xl">No teams registered yet</p>
             </div>
           ) : (
             <div className="space-y-4">
-              {teams.map((team) => (
-            <div key={team.id} className="bg-gradient-to-r from-gray-700/50 to-gray-800/50 p-6 rounded-lg border border-gray-600">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-4">
-                {/* ...existing code for checkbox and team info... */}
-                <div>
-                  <h3 className="text-xl font-bold text-white">{team.teamName}</h3>
-                  <p className="text-gray-400">Leader: {team.leaderName} ({team.leaderEmail})</p>
-                  <p className="text-gray-400">Team Size: {team.teamSize} Players</p>
-                  <p className="text-gray-400">Registered: {new Date(team.createdAt).toLocaleDateString()}</p>
-                  
-                  {/* --- यहाँ से टीम मेंबर्स दिखाएँ --- */}
-                  <div className="mt-4">
-                    <h4 className="text-lg font-semibold text-green-400 mb-2">Team Members:</h4>
-                    <ul className="space-y-1">
-                      {team.members && team.members.length > 0 ? (
-                        team.members.map((member, idx) => (
-                          <li key={idx} className="text-gray-300 text-sm pl-2 border-l-2 border-green-400">
-                            <span className="font-bold text-white">{member.name}</span>
-                            {" | "}
-                            <span>Email: {member.email}</span>
-                            {" | "}
-                            <span>Game ID: {member.gameId}</span>
-                          </li>
-                        ))
-                      ) : (
-                        <li className="text-gray-400 text-sm">No members</li>
-                      )}
-                    </ul>
-                  </div>
-                  {/* --- टीम मेंबर्स सेक्शन खत्म --- */}
-                </div>
-              </div>
-              {/* ...existing code for status and verify button... */}
+         {teams.map((team) => (
+    <div
+      key={team.id}
+      className="bg-gradient-to-r from-gray-700/50 to-gray-800/50 p-6 rounded-lg border border-gray-600"
+    >
+      {/* Top Section: Checkbox + Team Info */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div className="flex items-start space-x-2">
+          <input
+            type="checkbox"
+            checked={selectedTeams.includes(team.id)}
+            onChange={() => handleTeamSelection(team.id)}
+            className="accent-yellow-400 mt-1"
+          />
+          <div>
+            <h3 className="text-xl font-bold text-white">{team.teamName}</h3>
+            <p className="text-gray-400">
+              Leader: {team.leaderName} ({team.leaderEmail})
+            </p>
+            <p className="text-gray-400">Team Size: {team.teamSize} Players</p>
+            <p className="text-gray-400">
+              Registered: {new Date(team.createdAt).toLocaleDateString()}
+            </p>
+
+            {/* Team Members */}
+            <div className="mt-4">
+              <h4 className="text-lg font-semibold text-green-400 mb-2">
+                Team Members:
+              </h4>
+              <ul className="space-y-1">
+                {team.members && team.members.length > 0 ? (
+                  team.members.map((member, idx) => (
+                    <li
+                      key={idx}
+                      className="text-gray-300 text-sm pl-2 border-l-2 border-green-400"
+                    >
+                      <span className="font-bold text-white">{member.name}</span>{" "}
+                      | <span>Email: {member.email}</span> |{" "}
+                      <span>Game ID: {member.gameId}</span>
+                    </li>
+                  ))
+                ) : (
+                  <li className="text-gray-400 text-sm">No members</li>
+                )}
+              </ul>
             </div>
           </div>
-              ))}
+        </div>
+
+        {/* Status and Button Section */}
+        <div className="flex flex-col sm:items-end gap-3">
+          <div
+            className={`font-semibold ${getStatusColor(
+              team.verificationStatus
+            )} text-base sm:text-lg`}
+          >
+            {getStatusIcon(team.verificationStatus)}{" "}
+            {typeof team.verificationStatus === "string" &&
+            team.verificationStatus.length > 0
+              ? team.verificationStatus.charAt(0).toUpperCase() +
+                team.verificationStatus.slice(1)
+              : "Unknown"}
+          </div>
+          {team.verificationStatus !== "verified" && (
+            <button
+              disabled={verifying}
+              onClick={() => handleVerifyTeam(team.id)}
+              className="px-4 py-2 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600 transition-all duration-200 disabled:opacity-50 w-full sm:w-auto"
+            >
+              {verifying ? "Verifying..." : "Verify"}
+            </button>
+          )}
+        </div>
+      </div>
+    </div>
+  ))}
             </div>
           )}
         </div>
@@ -249,7 +293,7 @@ const AdminDashboard = () => {
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-xl border border-gray-700 max-w-2xl w-full mx-4">
               <h3 className="text-2xl font-bold text-yellow-400 mb-6">📢 Send Tournament Update</h3>
-              
+
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium mb-2">Subject *</label>
@@ -262,7 +306,7 @@ const AdminDashboard = () => {
                     required
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-2">Message *</label>
                   <textarea
@@ -273,7 +317,7 @@ const AdminDashboard = () => {
                     required
                   />
                 </div>
-                
+
                 <div className="flex items-center justify-between">
                   <span className="text-gray-400">
                     Selected Teams: {selectedTeams.length}
