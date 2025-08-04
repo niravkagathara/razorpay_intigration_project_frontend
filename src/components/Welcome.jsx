@@ -132,7 +132,7 @@ const Welcome = () => {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300">Entry Fee</span>
-                    <span className="text-green-400 font-bold text-xl">🆓 FREE</span>
+                    <span className="text-green-400 font-bold text-xl">100</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-gray-300">Max Teams</span>
@@ -216,7 +216,7 @@ const Welcome = () => {
                     <p className="text-gray-400 text-sm">Prize Pool</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-3xl font-bold text-purple-400">🆓</p>
+                    <p className="text-3xl font-bold text-purple-400">100</p>
                     <p className="text-gray-400 text-sm">Entry Fee</p>
                   </div>
                 </div>
