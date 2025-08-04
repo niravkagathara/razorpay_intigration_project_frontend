@@ -279,7 +279,7 @@ const RegistrationForm = () => {
               <div className="flex items-center justify-between p-4 bg-gray-800 rounded-lg">
                 <div>
                   <p className="text-gray-300">Registration Type</p>
-                    <p className="text-sm text-gray-400">₹10</p>
+                    <p className="text-sm text-gray-400">₹100</p>
                 </div>
                 <div className="text-right">
                   <p className="text-2xl font-bold text-green-400"> ₹100</p>
