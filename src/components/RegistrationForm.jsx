@@ -68,7 +68,7 @@ const RegistrationForm = () => {
           leaderName: form.leaderName,
           leaderEmail: form.leaderEmail,
           mobileNumber: form.mobile,
-          amount: 10,
+          amount: 100,
         };
 
         // 3. Create payment order
@@ -282,7 +282,7 @@ const RegistrationForm = () => {
                     <p className="text-sm text-gray-400">₹10</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-green-400"> ₹10</p>
+                  <p className="text-2xl font-bold text-green-400"> ₹100</p>
                   <p className="text-sm text-gray-400">Payment required</p>
                 </div>
               </div>
