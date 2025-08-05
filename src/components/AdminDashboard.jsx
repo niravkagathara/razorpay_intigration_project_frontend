@@ -23,7 +23,7 @@ const AdminDashboard = () => {
   };
   const fetchTeams = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/teams');
+      const response = await axios.get('https://razorpay-intigration-project-backen.vercel.app/api/admin/teams');
       if (response.data.success) {
         setTeams(response.data.teams);
       }
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
 
   const fetchStats = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/stats');
+      const response = await axios.get('https://razorpay-intigration-project-backen.vercel.app/api/admin/stats');
       if (response.data.success) {
         setStats(response.data.stats);
       }
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
   const handleVerifyTeam = async (teamId) => {
     setVerifying(true);
     try {
-      const response = await axios.post(`http://localhost:5000/api/admin/verify-team/${teamId}`, {
+      const response = await axios.post(`https://razorpay-intigration-project-backen.vercel.app/api/admin/verify-team/${teamId}`, {
         verifiedBy: 'Admin'
       });
 
@@ -88,7 +88,7 @@ const AdminDashboard = () => {
     setSendUpdateLoading(true);
     try {
       setSendUpdateLoading(true);
-      const response = await axios.post('http://localhost:5000/api/admin/send-update', {
+      const response = await axios.post('https://razorpay-intigration-project-backen.vercel.app/api/admin/send-update', {
         message: updateMessage,
         subject: updateSubject,
         selectedTeams: selectedTeams
