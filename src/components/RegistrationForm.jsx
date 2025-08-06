@@ -304,6 +304,35 @@ const RegistrationForm = () => {
           <p className="text-lg mb-2">📧 Email Confirmation • ✅ Team Verification • 🆓 ₹100 Payment required</p>
           <p className="text-sm">Your team will be verified by admin after registration</p>
         </div>
+        <footer className="bg-gray-900 text-gray-400 py-10 px-4 mt-10">
+  <div className="max-w-5xl mx-auto text-center">
+    <p className="text-lg font-medium mb-4">
+      🧑‍💼 Interview Portal 2025 • Powered by Tournament Management System
+    </p>
+
+    <div className="flex flex-wrap justify-center gap-6 text-sm mb-6">
+      <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/terms" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
+        Terms & Conditions
+      </a>
+      <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
+        Privacy Policy
+      </a>
+      <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/refund" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
+        Refund Policy
+      </a>
+      <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/shipping" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
+        Shipping Policy
+      </a>
+      <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/contact_us" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
+        Contact Us
+      </a>
+    </div>
+
+    <p className="text-xs">
+      © {new Date().getFullYear()} Interview Portal. All rights reserved.
+    </p>
+  </div>
+</footer>
       </div>
     </div>
   );
