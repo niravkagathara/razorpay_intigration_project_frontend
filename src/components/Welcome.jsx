@@ -227,10 +227,27 @@ const Welcome = () => {
 
         {/* Footer */}
         <div className="text-center py-8 border-t border-gray-800">
-          <p className="text-gray-400">
-            🎮 Free Fire Pro Championship 2025 • Powered by Tournament Management System
-          </p>
-        </div>
+  <p className="text-gray-400 mb-4">
+    🎮 Free Fire Pro Championship 2025 • Powered by Tournament Management System
+  </p>
+  <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
+    <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/terms" target="_blank" rel="noopener noreferrer">
+      Terms & Conditions
+    </a>
+    <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/privacy" target="_blank" rel="noopener noreferrer">
+      Privacy Policy
+    </a>
+    <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/refund" target="_blank" rel="noopener noreferrer">
+      Refund Policy
+    </a>
+    <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/shipping" target="_blank" rel="noopener noreferrer">
+      Shipping Policy
+    </a>
+    <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/contact_us" target="_blank" rel="noopener noreferrer">
+      Contact Us
+    </a>
+  </div>
+</div>
       </div>
     </div>
   );
