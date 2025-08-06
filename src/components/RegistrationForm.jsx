@@ -311,19 +311,19 @@ const RegistrationForm = () => {
     </p>
 
     <div className="flex flex-wrap justify-center gap-6 text-sm mb-6">
-      <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/terms" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
+      <a href="https://merchant.razorpay.com/policy/R1xR49poQ8uQBv/terms" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
         Terms & Conditions
       </a>
-      <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
+      <a href="https://merchant.razorpay.com/policy/R1xR49poQ8uQBv/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
         Privacy Policy
       </a>
-      <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/refund" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
+      <a href="https://merchant.razorpay.com/policy/R1xR49poQ8uQBv/refund" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
         Refund Policy
       </a>
-      <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/shipping" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
+      <a href="https://merchant.razorpay.com/policy/R1xR49poQ8uQBv/shipping" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
         Shipping Policy
       </a>
-      <a href="https://merchant.razorpay.com/policy/OJuvVXJAnJzqpd/contact_us" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
+      <a href="https://merchant.razorpay.com/policy/R1xR49poQ8uQBv/contact_us" target="_blank" rel="noopener noreferrer" className="hover:text-white underline">
         Contact Us
       </a>
     </div>
