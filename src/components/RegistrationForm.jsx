@@ -307,7 +307,7 @@ const RegistrationForm = () => {
         <footer className="bg-gray-900 text-gray-400 py-10 px-4 mt-10">
   <div className="max-w-5xl mx-auto text-center">
     <p className="text-lg font-medium mb-4">
-      🧑‍💼 Interview Portal 2025 • Powered by Tournament Management System
+      🧑‍💼 Tournament Portal 2025 • Powered by Tournament Management System
     </p>
 
     <div className="flex flex-wrap justify-center gap-6 text-sm mb-6">
